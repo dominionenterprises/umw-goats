@@ -4,7 +4,7 @@ from flask import Flask, session, request, render_template
 from flask_socketio import SocketIO, emit
 
 from database import DBManager
-
+#we got this
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
 
