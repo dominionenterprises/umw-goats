@@ -22,7 +22,7 @@ h6 {
 }
 
 .topnav {
-    font-size: 14px; 
+    font-size: 14px;
 }
 
 .lead {
@@ -34,8 +34,8 @@ h6 {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: center;
-    color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
+    color: #000000;
+    background: url('./../img/backgroud.png') no-repeat center center;
     background-size: cover;
 }
 
