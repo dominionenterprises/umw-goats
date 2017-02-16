@@ -15,7 +15,9 @@ app.controller("AngularController", function($scope) {
         console.log("Connected!");
     });
 
-    socket.on("addResult", function () {
-        console.log("result")
+    socket.on("addResult", function($result) {
+        console.log("result");
+        $scope.results.push($result);
+        $scope.$apply();
     });
 });
