@@ -3,7 +3,6 @@ import psycopg2
 import psycopg2.extras
 from flask import Flask, session, request, render_template
 from flask_socketio import SocketIO, emit
-
 from config import psql
 
 app = Flask(__name__)
