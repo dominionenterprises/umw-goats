@@ -1,6 +1,6 @@
 psql = {
      'host': 'localhost',
-     'user': 'root',
-     'passwd': 'my secret password',
-     'db': 'write-math'
+     'user': 'app',
+     'passwd': ';0rul2l0N]',
+     'db': 'postgres'
  }
