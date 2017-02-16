@@ -4,3 +4,4 @@ LOG:  database system was shut down at 2017-02-16 12:59:07 EST
 LOG:  MultiXact member wraparound protections are now enabled
 LOG:  database system is ready to accept connections
 LOG:  autovacuum launcher started
+FATAL:  role "app" does not exist
