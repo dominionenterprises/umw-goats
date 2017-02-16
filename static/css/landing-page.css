@@ -1,3 +1,7 @@
+html, body {
+    margin: 0;
+}
+
 body {
     font-family: "Lato","Helvetica",Helvetica,Arial,sans-serif;
     font-weight: 700;
@@ -5,7 +9,6 @@ body {
 
 .main {
     background: url("../img/backgroud.png");
-    background-size: cover;
     width: 100%;
 }
 
@@ -36,9 +39,23 @@ body {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 
+#filters {
+    margin: 50px;
+}
+
+.filter {
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 30px;
+    height: 50px;
+    margin-right: 10px;
+    width: 50px;
+}
+
 footer {
     background-color: #ffffff;
-    padding: 10px 0;
+    padding-top: 10px;
+    width: 100%;
 }
 
 input[type="search"] {
