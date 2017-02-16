@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, session, request, render_template
 from flask_socketio import SocketIO, emit
+from config import psql
 
 from database import DBManager
 
