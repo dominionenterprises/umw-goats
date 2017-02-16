@@ -1,6 +1,7 @@
 import os
 
-from flask import Flask, session, request, render_template
+from datetime import datetime
+from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 from config import psql
 
@@ -11,6 +12,13 @@ app.secret_key = os.urandom(24).hex()
 
 db = DBManager()
 socketio = SocketIO(app)
+
+@app.context_processor
+def getVars():
+    return {
+        "owner": "UMW Goats",
+        "now": datetime.now()
+    }
 
 @socketio.on("search", namespace="/socketio")
 def search(query):
