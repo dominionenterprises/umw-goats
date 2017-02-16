@@ -1,26 +1,21 @@
 import os
-import psycopg2
-import psycopg2.extras
+
 from flask import Flask, session, request, render_template
 from flask_socketio import SocketIO, emit
 from config import psql
 
+from database import DBManager
+
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
 
+db = DBManager()
 socketio = SocketIO(app)
-
-def connectToDB():
-    conn = 'dbname=' + psql['db'] + ' user=' + psql['user'] + ' password=' + psql['passwd']  + ' host=' + psql['host']
-    try:
-        return psycopg2.connect(conn)
-    except psycopg2.OperationalError:
-        print("Can't connect to database")
 
 @socketio.on("search", namespace="/socketio")
 def search(query):
-    print(query)
-    emit("addResult", "result")
+    for result in db.getResults(query):
+        emit("addResult", result)
 
 @app.route("/")
 def mainIndex():
