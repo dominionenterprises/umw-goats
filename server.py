@@ -19,7 +19,7 @@ socketio = SocketIO(app)
 def connectToDB():
     connection = 'dbname=' + psql['db'] + ' user=' + psql['user'] + ' password=' + psql['passwd']  + ' host=' + psql['host']
     host = 'localhost'
-    print connnection
+    print(connnection)
     try:
         return psycopg2.connect(connection)
     except:
