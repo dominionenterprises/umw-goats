@@ -12,12 +12,18 @@ app.secret_key = os.urandom(24).hex()
 
 socketio = SocketIO(app)
 
+@socketio.on("connect", namespace="/socketio")
+def connect():
+    print("connect")
+
+@socketio.on("search", namespace="/socketio")
+def search(query):
+    print(query)
+    emit("addResult", "result")
+
 @app.route('/')
 def mainIndex():
-    # print 'in hello world'
     return render_template('index.html')
 
-
-# start the server
-if __name__ == '__main__':
-    app.run(host=os.getenv('IP', '0.0.0.0'), port=int(os.getenv('PORT', 8080)), debug=True)
+if __name__ == "__main__":
+    socketio.run(app, host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
