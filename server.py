@@ -1,20 +1,24 @@
 import os
 
-from flask import Flask, session, request, render_template
+from datetime import datetime
+from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
-from database import DBManager
-#we got this
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
 
-db = DBManager()
 socketio = SocketIO(app)
+
+@app.context_processor
+def getVars():
+    return {
+        "owner": "UMW Goats",
+        "now": datetime.now()
+    }
 
 @socketio.on("search", namespace="/socketio")
 def search(query):
-    for result in db.getResults(query):
-        emit("addResult", result)
+    emit("addResult", "result")
 
 @app.route("/")
 def mainIndex():

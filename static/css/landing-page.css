@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * Start Bootstrap - Landing Page (http://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
@@ -168,3 +169,51 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+=======
+body {
+    font-family: "Lato","Helvetica",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.main {
+    background: url("../img/backgroud.png");
+    background-size: cover;
+    width: 100%;
+}
+
+.intro-header {
+    color: #a0a0a0;
+    text-align: center;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+footer {
+    background-color: #ffffff;
+    padding: 10px 0;
+}
+
+input[type="search"] {
+    padding-right: 130px;
+}
+>>>>>>> dfa2096deaf5e48200f70f4e0a0530aa567c3f30
