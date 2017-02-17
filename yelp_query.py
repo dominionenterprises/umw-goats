@@ -35,8 +35,7 @@ class yelper:
         return data
 
 y = yelper()
-
-print(y.resturant_search("22407"))
+y.resturant_search("22407")
 
 class renter:
     def __init__(self):
