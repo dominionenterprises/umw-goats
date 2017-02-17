@@ -41,7 +41,7 @@
 
 
 
-            <span class="fa fa-smile-o fa-2x pull-right"><h2 style="display: inline;"> {{ livingQuality }} </h2></span>
+            <!-- <span class="fa fa-smile-o fa-2x pull-right"><h2 style="display: inline;"> {{ livingQuality }} </h2></span> -->
 
         </div>
     </div>
@@ -65,9 +65,9 @@
             <div class="col-md-3">
 
 
+              {% if data %}
 
-
-                <div id="svg">
+            <div id="svg">
                   <svg height="755.0000610351562" version="1.1" width="755.0000610351562" xmlns="http://www.w3.org/2000/svg" viewBox="-35 -35 772.5000610351562 772.5000610351562"><desc>Created with Snap</desc><defs></defs><path data-cx="358.0000305175781" data-cy="358.0000305175781"
                   d="M358.0000305175781,358.0000305175781 L358.0000305175781,53.70000457763672 A304.3000259399414,304.3000259399414 0 0 1 609.8658141269241,528.7692690645106 Z" fill="#4d00ff" stroke="#333333" data-id="s0" style="stroke-width: 0;"></path><text x="642.6038151163643" y="199.06903443765182" data-id="s0" style="opacity: 0;">{{data[0].value}}%</text>
                   <path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L609.8658141269241,528.7692690645106 A304.3000259399414,304.3000259399414 0 0 1 434.1020158962848,652.6302964585846 Z" fill="#9900ff" stroke="#333333" data-id="s1" style="stroke-width: 0;" transform="matrix(1,0,0,1,0,0)"></path>
@@ -80,6 +80,7 @@
                   <text x="76.10556852098517" y="147.821185488629" data-id="s4" style="opacity: 0;">{{data[4].value}}%</text>
                   </svg>
             </div>
+            {% endif %}
         </div>
             <div class="col-md-2" style="margin-top:5%;">
                 <ul data-pie-id="svg">
