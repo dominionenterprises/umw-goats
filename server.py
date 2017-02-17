@@ -1,12 +1,12 @@
 import os
 
 from datetime import datetime
-from flask import Flask, render_template, redirect, url_for, Markup, request, session
-from flask_socketio import SocketIO, emit
-#from selenium.webdriver.common.by import By
 
-# from yelp_query import yelper
-# yelp = yelper()
+from flask import Flask, render_template, redirect, url_for, Markup, request, session
+
+from flask_socketio import SocketIO, emit
+
+from yelp_query import zillower
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
@@ -44,7 +44,7 @@ def mainIndex():
         try:
             session['location'] = request.form['search_term']
             print(session['location'])
-            
+
             # if 'location' not in session:
             #     print("before category")
             #     session['category'] = request.form['category']
@@ -52,6 +52,7 @@ def mainIndex():
             #     print(category)
         except:
             print("ughhhhhhhhhh")
+
 
 
 
