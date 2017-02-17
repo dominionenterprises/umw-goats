@@ -1,5 +1,3 @@
-import yelp_query
-
 
 import os
 
@@ -8,7 +6,7 @@ from flask import Flask, render_template, redirect, url_for, Markup, request, se
 from flask_socketio import SocketIO, emit
 
 
-import yelp_query
+# import yelp_query
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
