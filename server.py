@@ -71,13 +71,14 @@ def mainIndex():
                 session['location'] = 22401
 
             session['location'] = request.form['search_term']
-            # print(session['location'])
+
             yelpsearch = yelp_query.yelper()
             ratingslist = yelpsearch.resturant_search(session['location'])
-
+            print(session['location'])
             # for rating in ratingslist:
             #     total = total + rating
             print(sum(ratingslist))
+            print("SUM")
             # print(total)
             print("after for")
 
