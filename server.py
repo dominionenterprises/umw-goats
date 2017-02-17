@@ -1,10 +1,11 @@
 import os
 
 from datetime import datetime
-from flask import Flask, render_template, Markup
+from flask import Flask, render_template, Markup, request
 from flask_socketio import SocketIO, emit
 
 from yelp_query import yelper
+ yelp = yelper()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
@@ -69,6 +70,7 @@ def mainIndex():
     locationMapFormat = 'Brooklyn+Bridge,New+York,NY';
 
     return render_template('charts.html', livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = locationMapFormat)
+
 
 if __name__ == "__main__":
     socketio.run(app, host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)

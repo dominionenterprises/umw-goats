@@ -23,17 +23,18 @@
 
             </div>
 
-            <span class="fa fa-smile-o fa-2x pull-right" style="padding-top: 15px;"><h2 style="display: inline;"> {{ livingQuality }} </h2></span>
+            <span class="fa fa-smile-o fa-2x pull-right"><h2 style="display: inline;"> {{ livingQuality }} </h2></span>
 
         </div>
     </div>
 
     <div class="container">
 
-        <div class="progress progress-bar-vertical col-md-1">
-            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="20" aria-valuemax="100" style="height: 30%;"></div>
-            <!-- I'll flask this when it is fixed -->
+      <div class="progress progress-bar-vertical">
+        <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="height: {{selected}}%;">
+          <span><h6>{{selected}}%</h6></span>
         </div>
+      </div>
 
         <div class="map col-md-6">
             <!--
@@ -44,8 +45,24 @@
 
         <div class="row">
             <div class="col-md-3">
-                <div id="svg"><svg height="755.0000610351562" version="1.1" width="755.0000610351562" xmlns="http://www.w3.org/2000/svg" viewBox="-35 -35 772.5000610351562 772.5000610351562"><desc>Created with Snap</desc><defs></defs><path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L358.0000305175781,53.70000457763672 A304.3000259399414,304.3000259399414 0 0 1 609.8658141269241,528.7692690645106 Z" fill="#4d00ff" stroke="#333333" data-id="s0" style="stroke-width: 0;"></path><text x="642.6038151163643" y="199.06903443765182" data-id="s0" style="opacity: 0;">35%</text><path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L609.8658141269241,528.7692690645106 A304.3000259399414,304.3000259399414 0 0 1 434.1020158962848,652.6302964585846 Z" fill="#9900ff" stroke="#333333" data-id="s1" style="stroke-width: 0;" transform="matrix(1,0,0,1,0,0)"></path><text x="539.0125165788191" y="635.3514511944977" data-id="s1" style="opacity: 0;">12%</text><path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L434.1020158962848,652.6302964585846 A304.3000259399414,304.3000259399414 0 0 1 303.3562841770198,657.3536120443703 Z" fill="#e500ff" stroke="#333333" data-id="s2" style="stroke-width: 0;"></path><text x="359.69489276299004" y="697.0788652063266" data-id="s2" style="opacity: 0;">7%</text><path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L303.3562841770198,657.3536120443703 A304.3000259399414,304.3000259399414 0 0 1 62.04382959496593,428.7703132816269 Z" fill="#ff00cc" stroke="#333333" data-id="s3" style="stroke-width: 0;" transform="matrix(1,0,0,1,0,0)"></path><text x="110.16358628972787" y="604.3303197593768" data-id="s3" style="opacity: 0;">19%</text><path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L62.04382959496593,428.7703132816269 A304.3000259399414,304.3000259399414 0 0 1 358.00003051757807,53.70000457763672 Z" fill="#ff0080" stroke="#333333" data-id="s4" style="stroke-width: 0;"></path><text x="76.10556852098517" y="147.821185488629" data-id="s4" style="opacity: 0;">29%</text></svg></div>
+
+
+
+
+                <div id="svg">
+                  <svg height="755.0000610351562" version="1.1" width="755.0000610351562" xmlns="http://www.w3.org/2000/svg" viewBox="-35 -35 772.5000610351562 772.5000610351562"><desc>Created with Snap</desc><defs></defs><path data-cx="358.0000305175781" data-cy="358.0000305175781"
+                  d="M358.0000305175781,358.0000305175781 L358.0000305175781,53.70000457763672 A304.3000259399414,304.3000259399414 0 0 1 609.8658141269241,528.7692690645106 Z" fill="#4d00ff" stroke="#333333" data-id="s0" style="stroke-width: 0;"></path><text x="642.6038151163643" y="199.06903443765182" data-id="s0" style="opacity: 0;">{{data[0].value}}%</text>
+                  <path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L609.8658141269241,528.7692690645106 A304.3000259399414,304.3000259399414 0 0 1 434.1020158962848,652.6302964585846 Z" fill="#9900ff" stroke="#333333" data-id="s1" style="stroke-width: 0;" transform="matrix(1,0,0,1,0,0)"></path>
+                  <text x="539.0125165788191" y="635.3514511944977" data-id="s1" style="opacity: 0;">{{data[1].value}}%</text>
+                  <path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L434.1020158962848,652.6302964585846 A304.3000259399414,304.3000259399414 0 0 1 303.3562841770198,657.3536120443703 Z" fill="#e500ff" stroke="#333333" data-id="s2" style="stroke-width: 0;"></path>
+                  <text x="359.69489276299004" y="697.0788652063266" data-id="s2" style="opacity: 0;">{{data[2].value}}%</text>
+                  <path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L303.3562841770198,657.3536120443703 A304.3000259399414,304.3000259399414 0 0 1 62.04382959496593,428.7703132816269 Z" fill="#ff00cc" stroke="#333333" data-id="s3" style="stroke-width: 0;" transform="matrix(1,0,0,1,0,0)"></path>
+                  <text x="110.16358628972787" y="604.3303197593768" data-id="s3" style="opacity: 0;">{{data[3].value}}%</text>
+                  <path data-cx="358.0000305175781" data-cy="358.0000305175781" d="M358.0000305175781,358.0000305175781 L62.04382959496593,428.7703132816269 A304.3000259399414,304.3000259399414 0 0 1 358.00003051757807,53.70000457763672 Z" fill="#ff0080" stroke="#333333" data-id="s4" style="stroke-width: 0;"></path>
+                  <text x="76.10556852098517" y="147.821185488629" data-id="s4" style="opacity: 0;">{{data[4].value}}%</text>
+                  </svg>
             </div>
+        </div>
             <div class="col-md-2" style="margin-top:5%;">
                 <ul data-pie-id="svg">
                     {% for results in data  %}
@@ -53,7 +70,7 @@
                     <li data-value="{{ data[2] }}">4 <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></li>
                     <li data-value="{{ data[3] }}">3 <span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span></li>
                     <li data-value="{{ data[4] }}">2 <span class="fa fa-star"></span><span class="fa fa-star"></span></li>
-                    
+
                     <li data-value="{{ data[5] }}">1 <span class="fa fa-star"></span></li>
                    -->
                    <li data-value="{{ results['value'] }}">{{ results['content'] }}</li>
@@ -68,7 +85,7 @@
             {% for item in buttons %}
                 <div class="btn-group" role="group">
                     <form method="post" action="{{ item['action'] }}">
-                        <button type="submit" class="btn btn-default"><span class="{{ item['icon'] }}"></span> {{ item['title'] }}
+                        <button type="submit" class="btn btn-default"><span class="{{ item['icon'] }}"></span> {{ item['title'] }}</button>
                     </form>
                 </div>
             {% endfor %}

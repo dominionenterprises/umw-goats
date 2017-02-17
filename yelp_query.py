@@ -4,33 +4,39 @@ import json
 import io
 
 class yelper:
+    def __init__(self):
+        with io.open('config_secret.json') as cred:
+            creds = json.load(cred)
+            auth = Oauth1Authenticator(**creds)
+            self.client = Client(auth)
 
-	def __init__(self):
+    def resturant_search(self, query):
+        try:
+            params = {
+               'term':'food'
+            }
+            response = self.client.search(query,**params)
+        except Exception as e:
+            print(e)
+            return None
 
-		with io.open('config_secret.json') as cred:
-			creds = json.load(cred)
-			auth = Oauth1Authenticator(**creds)
-			self.client = Client(auth)
-
-	def search(self, query):
-			try:
-				response = self.client.search(query)
-			except Exception as e:
-				print(e)
-				return None
-
-			data = {}
-			for business in response.businesses:
-
-				data[business.id] = {"coordinates": (business.location.coordinate.latitude, business.location.coordinate.longitude)}
-				for i in dir(business):
-					print(i, getattr(business, i))
-				break
-			return data
+        data = [0]*5
+        for resturant in response.businesses:
+            data[int(resturant.rating)-1] +=  1
+        """
+            data[business.id] = {"coordinates": (business.location.coordinate.latitude, business.location.coordinate.longitude)}
+            print(business.categories)
+            print()
+        """
+        return data
 
 y =  yelper()
-print(y.search("Norfolk"))
 
+print(y.resturant_search("22407"))
 
+class renter:
+    def __init__(self):
+        pass
 
-
+    def search(self, query):
+        pass
