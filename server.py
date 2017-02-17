@@ -1,47 +1,12 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4c69aa071cb00ab815aeb800f601b20288d9e194
-import os
-
-from flask import Flask, session, request, render_template
-from flask_socketio import SocketIO, emit
-
-from database import DBManager
-#we got this
-app = Flask(__name__)
-app.secret_key = os.urandom(24).hex()
-
-db = DBManager()
-socketio = SocketIO(app)
-
-@socketio.on("search", namespace="/socketio")
-def search(query):
-    for result in db.getResults(query):
-        emit("addResult", result)
-
-@app.route("/")
-def mainIndex():
-    return render_template('index.html')
-
-if __name__ == "__main__":
-    socketio.run(app, host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
-<<<<<<< HEAD
-=======
-=======
 import os
 
 from datetime import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, Markup
 from flask_socketio import SocketIO, emit
-from config import psql
-
-from database import DBManager
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
 
-db = DBManager()
 socketio = SocketIO(app)
 
 @app.context_processor
@@ -53,14 +18,39 @@ def getVars():
 
 @socketio.on("search", namespace="/socketio")
 def search(query):
-    for result in db.getResults(query):
-        emit("addResult", result)
+    emit("addResult", "result")
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def mainIndex():
-    return render_template('index.html')
+    if request.method == 'POST':
+        search = request.form['search']
+    else:
+        search = "Virginia Beach"
+
+    # get info for search here
+
+    qualityOfLife='10%'
+
+    buttonItems = [
+                   {'action': '/test', 'icon': 'fa fa-cutlery' , 'title' : 'Restauraunt'},
+                   {'action': '/test2', 'icon': 'fa fa-shopping-bag' , 'title' : 'Shopping'},
+                   {'action': '/test3', 'icon': 'fa fa-glass' , 'title' : 'Night Life'},
+                   {'action': '/test4', 'icon': 'fa fa-car' , 'title' : 'Travel'},
+                   {'action': '/test5', 'icon': 'fa fa-house' , 'title' : 'Housing'},
+                   {'action': '/test6', 'icon': 'fa fa-stop' , 'title' : 'Safety'}
+                  ]
+
+    data = [
+            {'value':'10','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+            {'value':'20','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'30','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'20','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'10','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+           ]
+
+    location = 'Brooklyn+Bridge,New+York,NY';
+
+    return render_template('charts.html', livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = location)
 
 if __name__ == "__main__":
     socketio.run(app, host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
->>>>>>> dfa2096deaf5e48200f70f4e0a0530aa567c3f30
->>>>>>> 4c69aa071cb00ab815aeb800f601b20288d9e194

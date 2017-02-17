@@ -1,78 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 4c69aa071cb00ab815aeb800f601b20288d9e194
-<!DOCTYPE html>
-<html ng-app="TakeMeThere" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Yelp - Take Me There</title>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/landing-page.css" rel="stylesheet">
-    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-    <script src="static/js/jquery.slim.min.js" defer></script>
-    <script src="static/js/bootstrap.min.js" defer></script>
-    <script src="static/js/angular.min.js" defer></script>
-    <script src="static/js/socket.io.min.js" defer></script>
-    <script src="static/js/site.js" defer></script>
-</head>
-<body>
-  <div class="container" ng-controller="AngularController">
-    <a name="about"></a>
-    <div class="intro-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        <h1>Take Me There</h1>
-                        <hr class="intro-divider">
-                        <form class="navbar-form" role="search">
-                           <div class="form-group">
-                               <input ng-model="query" ng-change="search()" type="search" class="form-control" placeholder="Search">
-                           </div>
-                           <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {%block content %}{% endblock %}
-</div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#services">Services</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-<<<<<<< HEAD
-</html>
-=======
-</html>
-=======
 <!DOCTYPE html>
 <html ng-app="TakeMeThere" lang="en">
 <head>
@@ -87,23 +12,11 @@
     <script src="static/js/angular.min.js" defer></script>
     <script src="static/js/socket.io.min.js" defer></script>
     <script src="static/js/site.js" defer></script>
-    <style> #map { height: 100%;} </style>
-
 </head>
 <body>
   <div class="main container" ng-controller="AngularController">
     <div class="intro-header">
         <div class="container">
-<<<<<<< HEAD
-            <div>
-                <div class="intro-message">
-                    <h1>Take Me There</h1>
-                    <hr class="intro-divider">
-                    <form class="navbar-form" role="search">
-                        <input ng-model="query" ng-change="search()" type="search" class="form-control" placeholder="Search">
-                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-                    </form>
-=======
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
@@ -115,89 +28,15 @@
                            </div>
                         </form>
                     </div>
->>>>>>> 5a7e8d8713b4a5c5f014f4013c6731e78248ce63
                 </div>
             </div>
         </div>
     </div>
-
-      <!-- <img src="https://maps.googleapis.com/maps/api/staticmap?center=22401&zoom=13&size=600x300&maptype=roadmap&key=AIzaSyCeLxANJUQ3WnUUGhZzxjdREGQLDW4099I"> -->
-</div>
-
-<div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 20,
-          center: {lat: 36.8529, lng: -75.9780},
-          mapTypeId: 'terrain'
-        });
-
-        // Create a <script> tag and set the USGS URL as the source.
-        var script = document.createElement('script');
-
-        // This example uses a local copy of the GeoJSON stored at
-        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
-
-      }
-
-      function eqfeed_callback(results) {
-        var heatmapData = [];
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1], coords[0]);
-          heatmapData.push(latLng);
-        }
-        var heatmap = new google.maps.visualization.HeatmapLayer({
-          data: heatmapData,
-          dissipating: false,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmUyj4_vJ2IWtcvWWGee-gE8fo3P28L94&libraries=visualization&callback=initMap">
-    </script>
-
-
-
-
-
-    <footer>
-<<<<<<< HEAD
-        <div class="col-sm-4">
-            <p class="text-muted small">&copy; {{ owner }} {{ now.year }}</p>
-=======
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#services">Services</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Mikaela 2017</p>
-                </div>
-            </div>
->>>>>>> 5a7e8d8713b4a5c5f014f4013c6731e78248ce63
-        </div>
-    </footer>
+  </div>
+  <footer>
+      <div class="col-sm-4">
+          <p class="text-muted small">&copy; {{ owner }} {{ now.year }}</p>
+      </div>
+  </footer>
 </body>
 </html>
->>>>>>> dfa2096deaf5e48200f70f4e0a0530aa567c3f30
->>>>>>> 4c69aa071cb00ab815aeb800f601b20288d9e194
