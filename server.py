@@ -40,7 +40,7 @@ def restaurants():
 
 @app.route("/", methods=['GET', 'POST'])
 def mainIndex():
-    if (request.method == 'POST'):
+    if request.method == 'POST':
         category = request.form['category']
         print("category:")
         print(category)
