@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 from flask import Flask, render_template, redirect, url_for, Markup, request
 from flask_socketio import SocketIO, emit
-from selenium.webdriver.common.by import By
+#from selenium.webdriver.common.by import By
 
 # from yelp_query import yelper
 # yelp = yelper()
@@ -41,50 +41,22 @@ def restaurants():
 @app.route("/", methods=['GET', 'POST'])
 def mainIndex():
     if request.method == 'POST':
-        category = request.form['category']
-        print("category:")
-        print(category)
-        if category == "":
-            loc = request.form['search_term']
-            print("loc")
-            print(loc)
-
-        # if category == 'restaurant':
-        #     data = getRestaurant(location);
-        #
-        # elif category == 'shopping':
-        #     data = getShopping(location);
-        #
-        # elif category == 'nightlife':
-        #     data = getNightLife(location);
-        #
-        # elif category == 'travel':
-        #     data = getTravel(location);
-        #
-        # elif category == 'housing':
-        #     data = getHousing(location);
-        #
-        # elif category == 'safety':
-        #     data = getSafety(location);
-        #
-        # elif category == 'activites':
-        #     data = getActivites(location);
-        #
-        # else:
-    data = [
-            {'value':'10','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
-            {'value':'20','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'30','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'20','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'10','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
-            ]
+        loc = request.form['search_term']
+        print(loc)
 
     # qualityOfLife = getQuality(location);
 
+    data = [
+            {'value':'30','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+            {'value':'10','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'5','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'20','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'40','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+           ]
 
     locationMapFormat = 'Brooklyn+Bridge,New+York,NY';
 
-    return render_template('charts.html', data=data)
+    return render_template('charts.html',data=data)
 # , livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = locationMapFormat
 
 if __name__ == "__main__":

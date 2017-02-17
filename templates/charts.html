@@ -9,15 +9,18 @@
     <script src="static/js/charts.js" rel="stylesheet"></script>
     <!-- <script type="text/javascript" src="static/addons/bootstrap-progressbar-0.9.0/bootstrap-progressbar.js"></script> -->
     <!-- <link rel="stylesheet" src="static/addons/bootstrap-progressbar-0.9.0/bootstrap-progressbar-3.3.4.css"> -->
+    <script src="static/js/main.js"></script>
 </head>
 <body>
     <div class="navbar navbar-default">
         <div class="container">
             <div class="col-lg-6 col-lg-offset-2">
-                <div class="input-group" id="loc" style="padding-top: 10px;">
-                    <input type="text" class="form-control" value="loc" name="search_term" placeholder="Search for...">
+                <div class="input-group" style="padding-top: 10px;">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" name="search_button" type="button">Go!</button>
+                        <form method="post" action="/">
+                        <input type="text" class="form-control" id="loc" name="search_term" placeholder="Search for...">
+                        <button class="btn btn-default" name="search_button"id="submitloc" type="submit">Go!</button>
+                        </form>
                     </span>
                 </div><!-- /input-group -->
 
