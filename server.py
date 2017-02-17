@@ -4,12 +4,9 @@ from datetime import datetime
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
-from database import DBManager
-
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
 
-db = DBManager()
 socketio = SocketIO(app)
 
 @app.context_processor
@@ -21,8 +18,7 @@ def getVars():
 
 @socketio.on("search", namespace="/socketio")
 def search(query):
-    for result in db.getResults(query):
-        emit("addResult", result)
+    emit("addResult", "result")
 
 @app.route("/")
 def mainIndex():
