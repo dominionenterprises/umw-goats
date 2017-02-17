@@ -53,7 +53,7 @@ def mainIndex():
 
     locationMapFormat = 'Brooklyn+Bridge,New+York,NY';
 
-    return render_template('charts.html',data=data)
+    return render_template('charts.html',data=data, location = locationMapFormat)
 # , livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = locationMapFormat
 
 if __name__ == "__main__":
