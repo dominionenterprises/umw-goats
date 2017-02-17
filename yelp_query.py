@@ -1,7 +1,11 @@
+from pyzillow.pyzillow import ZillowWrapper, GetDeepSearchResults
 from yelp.client import Client
 from yelp.oauth1_authenticator import Oauth1Authenticator
 import json
 import io
+import re
+
+import os
 
 class yelper:
     def __init__(self):
@@ -30,7 +34,7 @@ class yelper:
         """
         return data
 
-y =  yelper()
+y = yelper()
 
 print(y.resturant_search("22407"))
 
@@ -40,3 +44,12 @@ class renter:
 
     def search(self, query):
         pass
+
+class zillower:
+    def search(self, query):
+        address, zipcode = query.rsplit(" ", 1)
+
+        data = ZillowWrapper("X1-ZWz19cu0z5xn9n_17jma")
+        response = data.get_deep_search_results(address, zipcode)
+
+        return GetDeepSearchResults(response)

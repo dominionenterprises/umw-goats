@@ -1,12 +1,10 @@
 import os
 
 from datetime import datetime
-from flask import Flask, render_template, redirect, url_for, Markup, request
+from flask import Flask, render_template, Markup, request
 from flask_socketio import SocketIO, emit
-#from selenium.webdriver.common.by import By
 
-# from yelp_query import yelper
-# yelp = yelper()
+from yelp_query import zillower
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
@@ -42,7 +40,6 @@ def restaurants():
 def mainIndex():
     if request.method == 'POST':
         loc = request.form['search_term']
-        print(loc)
 
     # qualityOfLife = getQuality(location);
 
