@@ -15,12 +15,13 @@ class yelper:
 	def search(self, query):
 			try:
 				response = self.client.search(query)
-			except:
+			except Exception as e:
+				print(e)
 				return None
 
 			data = {}
 			for business in response.businesses:
-				data[business.id] = {"coordinates": (business.location.coordinates.latitude, business.location.coordinates.longitude)}
+				data[business.id] = {"coordinates": (business.location.coordinate.latitude, business.location.coordinate.longitude)}
 			return data
 
 y =  yelper()
