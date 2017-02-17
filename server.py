@@ -20,7 +20,7 @@ def getVars():
 def search(query):
     emit("addResult", "result")
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def mainIndex():
     if request.method == 'POST':
         search = request.form['search']
