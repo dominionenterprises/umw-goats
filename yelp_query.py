@@ -27,11 +27,9 @@ class yelper:
         data = [0]*5
         for resturant in response.businesses:
             data[int(resturant.rating)-1] +=  1
-        """
-            data[business.id] = {"coordinates": (business.location.coordinate.latitude, business.location.coordinate.longitude)}
-            print(business.categories)
-            print()
-        """
+            print(resturant.name)
+
+        print(data)
         return data
 
 y = yelper()
@@ -48,6 +46,8 @@ class renter:
 class zillower:
     def search(self, query):
         address, zipcode = query.rsplit(" ", 1)
+        print("address"+address)
+        print("zipcode"+ zipcode)
 
         data = ZillowWrapper("X1-ZWz19cu0z5xn9n_17jma")
         response = data.get_deep_search_results(address, zipcode)
