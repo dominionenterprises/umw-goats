@@ -1,9 +1,9 @@
 import os
 
 from datetime import datetime
-from flask import Flask, render_template, redirect, url_for, Markup, request
+from flask import Flask, render_template, redirect, url_for, Markup, request, session
 from flask_socketio import SocketIO, emit
-from selenium.webdriver.common.by import By
+#from selenium.webdriver.common.by import By
 
 # from yelp_query import yelper
 # yelp = yelper()
@@ -41,14 +41,21 @@ def restaurants():
 @app.route("/", methods=['GET', 'POST'])
 def mainIndex():
     if request.method == 'POST':
-        loc = request.form['search_term']
-        print(loc)
-    else:
-        loc = ""
+        try:
+            session['location'] = request.form['search_term']
+            print(session['location'])
+            
+            # if 'location' not in session:
+            #     print("before category")
+            #     session['category'] = request.form['category']
+            #     pring("after category")
+            #     print(category)
+        except:
+            print("ughhhhhhhhhh")
 
 
 
-        # category = request.form['category']
+
         # print("category:")
         # print(category)
         # if category == "":
@@ -88,10 +95,9 @@ def mainIndex():
 
     # qualityOfLife = getQuality(location);
 
-
     locationMapFormat = 'Brooklyn+Bridge,New+York,NY';
 
-    return render_template('charts.html', data=data)
+    return render_template('charts.html',data=data)
 # , livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = locationMapFormat
 
 if __name__ == "__main__":
