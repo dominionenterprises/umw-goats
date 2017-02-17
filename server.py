@@ -25,13 +25,34 @@ def search(query):
 @app.route("/", methods=['GET', 'POST'])
 def mainIndex():
     if request.method == 'POST':
-        search = request.form['search']
-    else:
-        search = "Virginia Beach"
+        category = request.form['category']
 
-    # get info for search here
+        if category == 'restaurant':
+            data = getRestaurant(location);
 
-    qualityOfLife='10%'
+        elif category == 'shopping':
+            data = getShopping(location);
+
+        elif category == 'nightlife':
+            data = getNightLife(location);
+
+        elif category == 'travel':
+            data = getTravel(location);
+
+        elif category == 'housing':
+            data = getHousing(location);
+
+        elif category == 'safety':
+            data = getSafety(location);
+    
+        else:
+            data = [
+                    {'value':'10','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+                    {'value':'20','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                    {'value':'30','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                    {'value':'20','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                    {'value':'10','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+                    ]
 
     buttonItems = [
                    {'action': '/test', 'icon': 'fa fa-cutlery' , 'title' : 'Restauraunt'},
@@ -40,19 +61,14 @@ def mainIndex():
                    {'action': '/test4', 'icon': 'fa fa-car' , 'title' : 'Travel'},
                    {'action': '/test5', 'icon': 'fa fa-house' , 'title' : 'Housing'},
                    {'action': '/test6', 'icon': 'fa fa-stop' , 'title' : 'Safety'}
-                  ]
+                   ]
 
-    data = [
-            {'value':'10','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
-            {'value':'20','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'30','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'20','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'10','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
-           ]
+    qualityOfLife = getQuality(location);
 
-    location = 'Brooklyn+Bridge,New+York,NY';
 
-    return render_template('charts.html', livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = location)
+    locationMapFormat = 'Brooklyn+Bridge,New+York,NY';
+
+    return render_template('charts.html', livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = locationMapFormat)
 
 if __name__ == "__main__":
     socketio.run(app, host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)
