@@ -1,14 +1,31 @@
 from yelp.client import Client
-from yelp.oauth1_authenticator import OauthAuthenticator
+from yelp.oauth1_authenticator import Oauth1Authenticator
+import json
+import io
 
-with io.open('config_secret.json') as cred:
-	creds = json.load(cred)
-	auth = Oauth1Authenticator(**creds)
-	client = Client(auth)
+class yelper:
 
-params = {
-	;
-}
+	def __init__(self):
 
-client.search('San Francisco', **params)
+		with io.open('config_secret.json') as cred:
+			creds = json.load(cred)
+			auth = Oauth1Authenticator(**creds)
+			self.client = Client(auth)
+
+	def search(self, query):
+			try:
+				response = self.client.search(query)
+			except:
+				return None
+
+			data = {}
+			for business in response.businesses:
+				data[business.id] = {"coordinates": (business.location.coordinates.latitude, business.location.coordinates.longitude)}
+			return data
+
+y =  yelper()
+print(y.search("Norfolk"))
+
+
+
 
