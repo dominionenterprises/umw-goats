@@ -21,7 +21,11 @@ class yelper:
 
 			data = {}
 			for business in response.businesses:
+
 				data[business.id] = {"coordinates": (business.location.coordinate.latitude, business.location.coordinate.longitude)}
+				for i in dir(business):
+					print(i, getattr(business, i))
+				break
 			return data
 
 y =  yelper()
