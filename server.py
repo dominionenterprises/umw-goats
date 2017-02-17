@@ -4,6 +4,8 @@ from datetime import datetime
 from flask import Flask, render_template, Markup
 from flask_socketio import SocketIO, emit
 
+from yelp_query import yelper
+
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
 
