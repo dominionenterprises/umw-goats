@@ -4,9 +4,9 @@ from datetime import datetime
 from flask import Flask, render_template, Markup, request
 from flask_socketio import SocketIO, emit
 
-from yelp_query import yelper
+# from yelp_query import yelper
 
-yelp = yelper()
+# yelp = yelper()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
@@ -40,16 +40,16 @@ def mainIndex():
                    {'action': '/test2', 'icon': 'fa fa-shopping-bag' , 'title' : 'Shopping'},
                    {'action': '/test3', 'icon': 'fa fa-glass' , 'title' : 'Night Life'},
                    {'action': '/test4', 'icon': 'fa fa-car' , 'title' : 'Travel'},
-                   {'action': '/test5', 'icon': 'fa fa-house' , 'title' : 'Housing'},
-                   {'action': '/test6', 'icon': 'fa fa-stop' , 'title' : 'Safety'}
+                   {'action': '/test5', 'icon': 'fa fa-home' , 'title' : 'Housing'},
+                   {'action': '/test6', 'icon': 'fa fa-balance-scale' , 'title' : 'Safety'}
                   ]
 
     data = [
-            {'value':'10','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
-            {'value':'20','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'30','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'30','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+            {'value':'10','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'5','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
             {'value':'20','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'10','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+            {'value':'40','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
            ]
 
     location = 'Brooklyn+Bridge,New+York,NY';
