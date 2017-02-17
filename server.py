@@ -33,7 +33,7 @@ def mainIndex():
 
     # get info for search here
 
-    qualityOfLife='10%'
+    qualityOfLife='30%'
 
     buttonItems = [
                    {'action': '/test', 'icon': 'fa fa-cutlery' , 'title' : 'Restauraunt'},
@@ -52,9 +52,11 @@ def mainIndex():
             {'value':'40','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
            ]
 
+    overall = {'Restauraunt' : 40, 'Shopping' : 30, 'Night Life' : 60, 'Travel' : 45, 'Housing' : 70, 'Saftey' : 90}
+    selected = overall['Restauraunt']
     location = 'Brooklyn+Bridge,New+York,NY';
 
-    return render_template('charts.html', livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = location)
+    return render_template('charts.html', livingQuality=qualityOfLife, buttons=buttonItems, data = data, location = location, overall = overall, selected = selected)
 
 if __name__ == "__main__":
     socketio.run(app, host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), debug=True)

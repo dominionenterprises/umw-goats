@@ -75,8 +75,10 @@ ul[data-pie-id] {
 }
 
 
+.container { margin-top: 10px; }
+
 .progress-bar-vertical {
-  width: 20px;
+  width: 35px;
   min-height: 300px;
   display: flex;
   align-items: flex-end;
