@@ -41,13 +41,20 @@ def restaurants():
 @app.route("/", methods=['GET', 'POST'])
 def mainIndex():
     if request.method == 'POST':
-        category = request.form['category']
-        print("category:")
-        print(category)
-        if category == "":
-            loc = request.form['search_term']
-            print("loc")
-            print(loc)
+        loc = request.form['search_term']
+        print(loc)
+    else:
+        loc = ""
+
+
+
+        # category = request.form['category']
+        # print("category:")
+        # print(category)
+        # if category == "":
+        #     loc = request.form['search_term']
+        #     print("loc")
+        #     print(loc)
 
         # if category == 'restaurant':
         #     data = getRestaurant(location);
