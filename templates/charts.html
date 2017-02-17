@@ -67,7 +67,7 @@
             {% for item in buttons %}
                 <div class="btn-group" role="group">
                     <form method="post" action="{{ item[action] }}">
-                        <button type="submit" class="btn-default"><span class="{{ item[icon] }}"></span> {{ item[title] }}
+                        <button type="submit" class="btn-default"><span class="{{ item[icon] }}"></span> {{ item[title] }}</button>
                     </form>
                 </div>
             {% endfor %}

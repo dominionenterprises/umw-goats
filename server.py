@@ -7,7 +7,6 @@ from flask_socketio import SocketIO, emit
 from yelp_query import yelper
 
 yelp = yelper()
-print(yelp.search("Norfolk"))
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24).hex()
