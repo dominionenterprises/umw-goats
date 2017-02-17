@@ -1,5 +1,8 @@
 {
   "name": "umw-goats",
+  "logo": "https://pbs.twimg.com/profile_images/2793033168/609c8c3dda4ebf319f8b440d12f8f991_400x400.png",
+  "repository": "https://github.com/dominionenterprises/umw-goats",
+  "description":"",
   "scripts": {
   },
   "env": {
