@@ -1,7 +1,9 @@
 import os
 
 from datetime import datetime
-from flask import Flask, render_template, Markup, request
+
+from flask import Flask, render_template, redirect, url_for, Markup, request, session
+
 from flask_socketio import SocketIO, emit
 
 from yelp_query import zillower
@@ -39,17 +41,60 @@ def restaurants():
 @app.route("/", methods=['GET', 'POST'])
 def mainIndex():
     if request.method == 'POST':
-        loc = request.form['search_term']
+        try:
+            session['location'] = request.form['search_term']
+            print(session['location'])
+
+            # if 'location' not in session:
+            #     print("before category")
+            #     session['category'] = request.form['category']
+            #     pring("after category")
+            #     print(category)
+        except:
+            print("ughhhhhhhhhh")
+
+
+
+
+
+        # print("category:")
+        # print(category)
+        # if category == "":
+        #     loc = request.form['search_term']
+        #     print("loc")
+        #     print(loc)
+
+        # if category == 'restaurant':
+        #     data = getRestaurant(location);
+        #
+        # elif category == 'shopping':
+        #     data = getShopping(location);
+        #
+        # elif category == 'nightlife':
+        #     data = getNightLife(location);
+        #
+        # elif category == 'travel':
+        #     data = getTravel(location);
+        #
+        # elif category == 'housing':
+        #     data = getHousing(location);
+        #
+        # elif category == 'safety':
+        #     data = getSafety(location);
+        #
+        # elif category == 'activites':
+        #     data = getActivites(location);
+        #
+        # else:
+    data = [
+            {'value':'10','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+            {'value':'20','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'30','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'20','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+            {'value':'10','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+            ]
 
     # qualityOfLife = getQuality(location);
-
-    data = [
-            {'value':'30','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
-            {'value':'10','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'5','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'20','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-            {'value':'40','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
-           ]
 
     locationMapFormat = 'Brooklyn+Bridge,New+York,NY';
 
