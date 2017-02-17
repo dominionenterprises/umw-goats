@@ -3,8 +3,8 @@
   "scripts": {
   },
   "env": {
-    "CONSUMER_KEY:"",
-    "CONSUMER_SECRET:"",
+    "CONSUMER_KEY":"",
+    "CONSUMER_SECRET":"",
     "TOKEN":"",
     "TOKEN_SECRET":""
   },
