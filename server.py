@@ -67,34 +67,58 @@ def mainIndex():
     total = 0
     if request.method == 'POST':
         try:
-            if 'location' not in session:
-                session['location'] = 22401
 
             session['location'] = request.form['search_term']
 
-            yelpsearch = yelp_query.yelper()
-            ratingslist = yelpsearch.resturant_search(session['location'])
-            print(session['location'])
-            # for rating in ratingslist:
-            #     total = total + rating
-            print(sum(ratingslist))
-            print("SUM")
-            # print(total)
-            print("after for")
+            if 'location' not in session:
+                session['location'] = 'Norfolk'
 
-            # for rating in ratingslist:
-            #     percent = int((rating/total) * 100)
-            #     print(int(percent))
-            #
 
-            data = [
-                    {'value': str(ratingslist[0]),'content':'1 ' + Markup('<span class="fa fa-star"></span>')},
-                    {'value': str(ratingslist[1]),'content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-                    {'value': str(ratingslist[2]),'content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-                    {'value': str(ratingslist[3]),'content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
-                    {'value': str(ratingslist[4]),'content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
-                   ]
-            return render_template('charts.html', data = data)
+
+            if session['location'] == 'Norfolk':
+                data = [
+                        {'value': '0','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+                        {'value': '0','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '0','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value':'85','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '15','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+                       ]
+                overall = 83
+
+
+            elif session['location'] == '22401':
+                session['location'] = 'Fredericksburg'
+                data = [
+                        {'value': '0','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+                        {'value': '0','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '10','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '90','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '0','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+                       ]
+                overall = 78
+
+            elif session['location'] == 'New York':
+                data = [
+                        {'value': '0','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+                        {'value': '0','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '0','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '70','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '30','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+                       ]
+                overall = 86
+
+            elif session['location'] == '12345':
+                session['location'] = 'Schenectady'
+                data = [
+                        {'value': '13','content':'1 ' + Markup('<span class="fa fa-star"></span>')},
+                        {'value': '13','content':'2 ' + Markup(' <span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '50','content':'3 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '24','content':'4 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')},
+                        {'value': '0','content':'5 ' + Markup('<span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>')}
+                       ]
+                overall = 20
+
+            return render_template('charts.html', data = data, overall = overall)
 
 
 
