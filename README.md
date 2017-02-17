@@ -3,7 +3,8 @@ DE Hack U 5 Student Repository
 
 ## Installation
 
-The code can be installed from github. 
+The code can be installed from github.
+
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Usage
