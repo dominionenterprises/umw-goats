@@ -1,6 +1,9 @@
 # umw-goats
 DE Hack U 5 Student Repository
 
+This project won Most Open Source Friendly for the Dominion Enterprise HACK U 5
+http://hackathon.dominionenterprises.com/hack-u-5-take-me-there/
+
 ## Installation
 
 The code can be installed from github.
@@ -8,6 +11,8 @@ The code can be installed from github.
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ## Usage
+
+
 ### Basics
 
 The program uses API to provide readable information to the user, using a Heroku instance.
